@@ -56,13 +56,33 @@ spec:
           resources:
             {{- toYaml . | nindent 12 }}
           {{- end }}
-          {{- with .Values.volumeMounts }}
           volumeMounts:
-            {{- toYaml . | nindent 12 }}
+            - name: logs
+              mountPath: /octobot/logs
+            - name: backtesting
+              mountPath: /octobot/backtesting
+            - name: tentacles
+              mountPath: /octobot/tentacles
+            - name: user
+              mountPath: /octobot/user
+          {{- if .Values.main.extraVolumeMounts }}
+            {{- toYaml .Values.main.extraVolumeMounts | nindent 12 }}
           {{- end }}
-      {{- with .Values.volumes }}
       volumes:
-        {{- toYaml . | nindent 8 }}
+        - name: logs
+          persistentVolumeClaim:
+            claimName: {{ .Values.persistence.claims.logs.claimName }}
+        - name: backtesting
+          persistentVolumeClaim:
+            claimName: {{ .Values.persistence.claims.backtesting.claimName }}
+        - name: tentacles
+          persistentVolumeClaim:
+            claimName: {{ .Values.persistence.claims.tentacles.claimName }}
+        - name: user
+          persistentVolumeClaim:
+            claimName: {{ .Values.persistence.claims.user.claimName }}
+      {{- if .Values.main.extraVolumes }}
+        {{- toYaml .Values.main.extraVolumes | nindent 8 }}
       {{- end }}
       {{- with .Values.nodeSelector }}
       nodeSelector:

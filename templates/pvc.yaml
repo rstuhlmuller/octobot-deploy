@@ -1,0 +1,43 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: {{ .Values.persistence.claims.logs.claimName }}
+spec:
+  accessModes:
+    - {{ .Values.persistence.claims.logs.accessMode }}
+  resources:
+    requests:
+      storage: {{ .Values.persistence.claims.logs.size }}
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: {{ .Values.persistence.claims.backtesting.claimName }}
+spec:
+  accessModes:
+    - {{ .Values.persistence.claims.backtesting.accessMode }}
+  resources:
+    requests:
+      storage: {{ .Values.persistence.claims.backtesting.size }}
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: {{ .Values.persistence.claims.tentacles.claimName }}
+spec:
+  accessModes:
+    - {{ .Values.persistence.claims.tentacles.accessMode }}
+  resources:
+    requests:
+      storage: {{ .Values.persistence.claims.tentacles.size }}
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: {{ .Values.persistence.claims.user.claimName }}
+spec:
+  accessModes:
+    - {{ .Values.persistence.claims.user.accessMode }}
+  resources:
+    requests:
+      storage: {{ .Values.persistence.claims.user.size }}
