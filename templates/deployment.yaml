@@ -68,16 +68,16 @@ spec:
       volumes:
         - name: logs
           persistentVolumeClaim:
-            claimName: {{ .Values.persistence.claims.logs.claimName }}
+            claimName: logs
         - name: backtesting
           persistentVolumeClaim:
-            claimName: {{ .Values.persistence.claims.backtesting.claimName }}
+            claimName: backtesting
         - name: tentacles
           persistentVolumeClaim:
-            claimName: {{ .Values.persistence.claims.tentacles.claimName }}
+            claimName: tentacles
         - name: user
           persistentVolumeClaim:
-            claimName: {{ .Values.persistence.claims.user.claimName }}
+            claimName: user
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}

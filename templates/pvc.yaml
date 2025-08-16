@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: {{ .Values.persistence.claims.logs.claimName }}
+  name: logs
 spec:
   accessModes:
     - {{ .Values.persistence.claims.logs.accessMode }}
@@ -12,7 +12,7 @@ spec:
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: {{ .Values.persistence.claims.backtesting.claimName }}
+  name: backtesting
 spec:
   accessModes:
     - {{ .Values.persistence.claims.backtesting.accessMode }}
@@ -23,7 +23,7 @@ spec:
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: {{ .Values.persistence.claims.tentacles.claimName }}
+  name: tentacles
 spec:
   accessModes:
     - {{ .Values.persistence.claims.tentacles.accessMode }}
@@ -34,7 +34,7 @@ spec:
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: {{ .Values.persistence.claims.user.claimName }}
+  name: user
 spec:
   accessModes:
     - {{ .Values.persistence.claims.user.accessMode }}
