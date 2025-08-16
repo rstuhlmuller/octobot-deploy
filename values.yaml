@@ -121,3 +121,19 @@ nodeSelector: {}
 tolerations: []
 
 affinity: {}
+
+persistence:
+  enabled: true
+  claims:
+    logs:
+      accessMode: "ReadWriteOnce"
+      size: "1Gi"
+    backtesting:
+      accessMode: "ReadWriteOnce"
+      size: "1Gi"
+    tentacles:
+      accessMode: "ReadWriteOnce"
+      size: "1Gi"
+    user:
+      accessMode: "ReadWriteOnce"
+      size: "1Gi"
