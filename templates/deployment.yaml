@@ -65,9 +65,6 @@ spec:
               mountPath: /octobot/tentacles
             - name: user
               mountPath: /octobot/user
-          {{- if .Values.main.extraVolumeMounts }}
-            {{- toYaml .Values.main.extraVolumeMounts | nindent 12 }}
-          {{- end }}
       volumes:
         - name: logs
           persistentVolumeClaim:
@@ -81,9 +78,6 @@ spec:
         - name: user
           persistentVolumeClaim:
             claimName: {{ .Values.persistence.claims.user.claimName }}
-      {{- if .Values.main.extraVolumes }}
-        {{- toYaml .Values.main.extraVolumes | nindent 8 }}
-      {{- end }}
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
